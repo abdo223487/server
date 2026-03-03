@@ -31,11 +31,15 @@ webServer:
   publicScheme: http
 
 # This is the database setup for your server.
-database:
-  host: localhost
-  port: 8090
-  name: my_first_app
-  user: postgres
+development:
+  database:
+    host: pg-754799d-abdallahelhdad223-d33b.j.aivencloud.com
+    port: 20650
+    name: defaultdb
+    user: avnadmin
+    password: AVNS_bzpB2irtfc-oNxhMkZl
+    requireSsl: true
+  serviceSecret: '_8c8wAbuU5VnypZRn0eN8ucEmA09kpFw'
   #requireSsl: true # defaults to false
   #isUnixSocket: true # defaults to false
 
