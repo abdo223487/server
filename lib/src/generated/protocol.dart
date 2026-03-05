@@ -13,6 +13,7 @@ import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod/protocol.dart' as _i2;
 import 'greeting.dart' as _i3;
 import 'hadith.dart' as _i4;
+import 'package:my_first_app_server/src/generated/hadith.dart' as _i5;
 export 'greeting.dart';
 export 'hadith.dart';
 
@@ -106,6 +107,10 @@ class Protocol extends _i1.SerializationManagerServer {
     }
     if (t == _i1.getType<_i4.Hadith?>()) {
       return (data != null ? _i4.Hadith.fromJson(data) : null) as T;
+    }
+    if (t == List<_i5.Hadith>) {
+      return (data as List).map((e) => deserialize<_i5.Hadith>(e)).toList()
+          as T;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
