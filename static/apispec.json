@@ -1,0 +1,69 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "My Serverpod API",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://server-br21.onrender.com/api",
+      "description": "Main API Server"
+    }
+  ],
+  "paths": {
+    "/hadith/getAll": {
+      "get": {
+        "summary": "getAll",
+        "operationId": "hadith.getAll",
+        "tags": ["hadith"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Hadith"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hadith/addHadith": {
+      "get": {
+        "summary": "addHadith",
+        "operationId": "hadith.addHadith",
+        "tags": ["hadith"],
+        "parameters": [
+          {"name": "title", "in": "query", "required": true, "schema": {"type": "string"}},
+          {"name": "text", "in": "query", "required": true, "schema": {"type": "string"}},
+          {"name": "narrator", "in": "query", "required": true, "schema": {"type": "string"}},
+          {"name": "source", "in": "query", "required": true, "schema": {"type": "string"}},
+          {"name": "category", "in": "query", "required": true, "schema": {"type": "string"}}
+        ],
+        "responses": {
+          "200": {"description": "Successful operation"}
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Hadith": {
+        "type": "object",
+        "properties": {
+          "title": {"type": "string"},
+          "text": {"type": "string"},
+          "narrator": {"type": "string"},
+          "source": {"type": "string"},
+          "category": {"type": "string"}
+        },
+        "required": ["title", "text"]
+      }
+    }
+  }
+}
